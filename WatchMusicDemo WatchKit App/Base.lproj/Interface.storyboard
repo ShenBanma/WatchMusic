@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--BaM-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller title="BaM" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchMusicDemo_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="90" height="90" alignment="center" radius="45" id="xhV-lD-sCk">
+                            <items>
+                                <imageView width="1" height="1" alignment="center" verticalAlignment="center" id="wR0-dN-6Kb"/>
+                            </items>
+                        </group>
+                        <label width="1" alignment="left" text="songs - singer" textAlignment="center" minimumScaleFactor="0.10000000000000001" id="0j4-bN-A8s"/>
+                        <group width="1" alignment="left" verticalAlignment="center" spacing="10" id="Gjl-ea-LG2">
+                            <items>
+                                <button width="25" height="25" alignment="center" verticalAlignment="center" backgroundImage="btnPre" id="c8m-g3-gCD">
+                                    <connections>
+                                        <action selector="pre" destination="AgC-eL-Hgc" id="FJP-I7-1Ha"/>
+                                    </connections>
+                                </button>
+                                <button width="30" height="30" alignment="center" verticalAlignment="center" backgroundImage="btnPause" id="BkI-4L-Kng">
+                                    <connections>
+                                        <action selector="playOrPause" destination="AgC-eL-Hgc" id="n0e-IQ-yRD"/>
+                                    </connections>
+                                </button>
+                                <button width="25" height="25" alignment="center" verticalAlignment="center" backgroundImage="btnNext" id="qoF-us-7ky">
+                                    <connections>
+                                        <action selector="next" destination="AgC-eL-Hgc" id="fHk-Yw-hxC"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="iws-fY-NpM">
+                        <items>
+                            <menuItem title="歌曲" icon="info" id="Siy-r2-Iib">
+                                <connections>
+                                    <action selector="presentSongsList" destination="AgC-eL-Hgc" id="4zu-Mp-epT"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="频道" icon="more" id="VCQ-eL-RQZ">
+                                <connections>
+                                    <action selector="presentChannelsList" destination="AgC-eL-Hgc" id="MWw-Ia-GrJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="取消" icon="block" id="RBT-fe-lUJ"/>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="buttonPlay" destination="BkI-4L-Kng" id="jJT-2f-iq6"/>
+                        <outlet property="image" destination="wR0-dN-6Kb" id="y7X-sh-iD9"/>
+                        <outlet property="labelInformation" destination="0j4-bN-A8s" id="OkU-z3-OiX"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="272" y="358"/>
+        </scene>
+        <!--返回-->
+        <scene sceneID="6uY-EY-Z0q">
+            <objects>
+                <controller identifier="channelsList" title="返回" id="Ffq-Sj-tTT" customClass="ChannelsInterfaceController" customModule="WatchMusicDemo_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="Nck-DI-0WP">
+                            <items>
+                                <tableRow identifier="channelsRow" id="fOL-cF-BNH" customClass="ChannelsRow" customModule="WatchMusicDemo_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="Qiu-wB-vip">
+                                        <items>
+                                            <label width="1" alignment="left" text="channel" minimumScaleFactor="0.10000000000000001" id="7S8-up-oHT"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="labelChannel" destination="7S8-up-oHT" id="axc-Nx-JQB"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="Nck-DI-0WP" id="GTl-Wl-P6N"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="272" y="591"/>
+        </scene>
+        <!--返回-->
+        <scene sceneID="HW5-HO-DAx">
+            <objects>
+                <controller identifier="songsList" title="返回" id="ElH-vu-5m0" customClass="SongsListInterfaceController" customModule="WatchMusicDemo_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="Pkt-qK-Pp5">
+                            <items>
+                                <tableRow identifier="songList" id="q3d-9S-pSX" customClass="SongsListTableRow" customModule="WatchMusicDemo_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="Syi-dF-UYD">
+                                        <items>
+                                            <imageView width="30" height="30" alignment="center" verticalAlignment="center" id="8b9-NQ-Oug"/>
+                                            <group width="80" alignment="center" verticalAlignment="center" layout="vertical" id="zEX-7n-YCf">
+                                                <items>
+                                                    <label alignment="left" text="songName" minimumScaleFactor="0.10000000000000001" id="gkH-KF-ueA"/>
+                                                    <label alignment="left" text="singer" minimumScaleFactor="0.10000000000000001" id="Pc6-Uf-BfU">
+                                                        <fontDescription key="font" type="system" pointSize="10"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="image" destination="8b9-NQ-Oug" id="lgC-3c-1vC"/>
+                                        <outlet property="labelSinger" destination="Pc6-Uf-BfU" id="bpJ-rl-4B5"/>
+                                        <outlet property="labelSongName" destination="gkH-KF-ueA" id="Sea-tg-aE3"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="Pkt-qK-Pp5" id="32i-VA-qS5"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="492" y="358"/>
+        </scene>
+    </scenes>
+</document>
