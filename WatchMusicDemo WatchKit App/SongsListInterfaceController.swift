@@ -31,7 +31,8 @@ class SongsListInterfaceController: WKInterfaceController {
             if let songName = json["title"].string, singer = json["artist"].string, imgURL = json["picture"].string {
                 row.labelSinger.setText(singer)
                 row.labelSongName.setText(songName)
-                data.addImage(imgURL, imageView: row.image)
+                data.addImage(imgURL, imageView: row.image, competion: { () -> () in
+                })
             }
         }
         // Configure interface objects here.

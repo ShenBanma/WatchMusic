@@ -13,6 +13,7 @@ import MediaPlayer
 
 class InterfaceController: WKInterfaceController,GetJsonDelegate, ReturnSongsIndexDelegate , ReturnChannelsDelegate{
     
+    @IBOutlet weak var labelRemind: WKInterfaceLabel!
     @IBOutlet weak var buttonPlay: WKInterfaceButton!
     @IBOutlet weak var labelInformation: WKInterfaceLabel!
     @IBOutlet weak var image: WKInterfaceImage!
@@ -33,8 +34,10 @@ class InterfaceController: WKInterfaceController,GetJsonDelegate, ReturnSongsInd
         // Configure interface objects here.
         controller = HttpGetController()
         controller.delegate = self
+        self.changeViewState(true)
         controller.getInformation("http://www.douban.com/j/app/radio/channels")
         controller.getInformation("http://douban.fm/j/mine/playlist?type=n&channel=0&from=mainsite")
+        
     }
 
 
@@ -50,6 +53,13 @@ class InterfaceController: WKInterfaceController,GetJsonDelegate, ReturnSongsInd
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    func changeViewState(show: Bool) {
+        image.setHidden(show)
+        labelInformation.setHidden(show)
+        labelRemind.setHidden(!show)
+    }
+    
     @IBAction func presentSongsList() {
         canRun = false
         isPlay = false
@@ -110,10 +120,13 @@ class InterfaceController: WKInterfaceController,GetJsonDelegate, ReturnSongsInd
     
     func onSetImageAndOtherInformation(index: Int) {
         if data.songsData.count != 0 && !isPlay{
+            self.changeViewState(true)
             let json = data.songsData[index]
             if let imgURL = json["picture"].string, songName = json["title"].string, singer = json["artist"].string {
-                data.addImage(imgURL, imageView: image)
                 labelInformation.setText("\(songName) - \(singer)")
+                data.addImage(imgURL, imageView: image, competion: { () -> () in
+                    self.changeViewState(false)
+                })
             }
             if let musicURL = json["url"].string {
                 playMusic(musicURL)

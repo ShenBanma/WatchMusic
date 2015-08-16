@@ -24,7 +24,7 @@ class DataManager: NSObject {
     }
     
     //插入图片
-    func addImage(url: String, imageView: WKInterfaceImage) {
+    func addImage(url: String, imageView: WKInterfaceImage, competion:() ->()) {
         if let imageName = NSURL(string: url)?.path?.lastPathComponent{
             if hasImage(imageName) {
                 imageView.setImageNamed(imageName)
@@ -38,6 +38,7 @@ class DataManager: NSObject {
                         self.addImageToCache(image!, imageName: imageName)
                         imageView.setImageNamed(imageName)
                     }
+                    competion()
                     
                 })
                 

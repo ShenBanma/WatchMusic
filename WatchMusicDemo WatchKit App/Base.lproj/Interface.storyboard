@@ -10,6 +10,9 @@
             <objects>
                 <controller title="BaM" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchMusicDemo_WatchKit_App" customModuleProvider="target">
                     <items>
+                        <label alignment="center" verticalAlignment="center" text="加载新的歌曲信息中" minimumScaleFactor="0.5" id="kzv-dj-icY">
+                            <color key="textColor" red="0.9450981021" green="0.97254908080000002" blue="0.21568629149999999" alpha="1" colorSpace="deviceRGB"/>
+                        </label>
                         <group width="90" height="90" alignment="center" radius="45" id="xhV-lD-sCk">
                             <items>
                                 <imageView width="1" height="1" alignment="center" verticalAlignment="center" id="wR0-dN-6Kb"/>
@@ -55,6 +58,7 @@
                         <outlet property="buttonPlay" destination="BkI-4L-Kng" id="jJT-2f-iq6"/>
                         <outlet property="image" destination="wR0-dN-6Kb" id="y7X-sh-iD9"/>
                         <outlet property="labelInformation" destination="0j4-bN-A8s" id="OkU-z3-OiX"/>
+                        <outlet property="labelRemind" destination="kzv-dj-icY" id="L81-cT-QWH"/>
                     </connections>
                 </controller>
             </objects>
