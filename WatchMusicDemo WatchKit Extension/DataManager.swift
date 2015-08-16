@@ -28,6 +28,7 @@ class DataManager: NSObject {
         if let imageName = NSURL(string: url)?.path?.lastPathComponent{
             if hasImage(imageName) {
                 imageView.setImageNamed(imageName)
+                competion()
             }else {
                 var request:Alamofire.Request?
                 request = Alamofire.request(.GET, url).response({ (req, _, data, error) -> Void in
@@ -37,11 +38,9 @@ class DataManager: NSObject {
                         let image = UIImage(data: data!)
                         self.addImageToCache(image!, imageName: imageName)
                         imageView.setImageNamed(imageName)
+                        competion()
                     }
-                    competion()
-                    
                 })
-                
             }
         }
     }
